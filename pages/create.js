@@ -83,7 +83,7 @@ const Create = () =>{
 export async function getServerSideProps(context){
     const cookie = parseCookies(context)
     const user = cookie.user ? JSON.parse(cookie.user):""
-    if(user.role !== "admin"||user.role !== "root"){
+    if(user.role === "user"||user.role === ""){
         const {res} = context;
         res.writeHead(302,{Location:"/"})
         res.end()
