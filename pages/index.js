@@ -35,17 +35,7 @@ const Home = ({ products }) => {
   );
 };
 
-// export async function getStaticProps() {
-//   const response = await fetch(`${baseUrl}/api/products`);
-//   const data = await response.json();
-//   return {
-//     props: {
-//       products: data,
-//     },
-//   };
-// }
-
-export async function getServerSideProps () {
+export async function getStaticProps() {
   const response = await fetch(`${baseUrl}/api/products`);
   const data = await response.json();
   return {
@@ -54,5 +44,15 @@ export async function getServerSideProps () {
     },
   };
 }
+
+// export async function getServerSideProps () {
+//   const response = await fetch(`${baseUrl}/api/products`);
+//   const data = await response.json();
+//   return {
+//     props: {
+//       products: data,
+//     },
+//   };
+// }
 
 export default Home;

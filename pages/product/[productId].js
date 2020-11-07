@@ -153,31 +153,31 @@ const Product = ({ product }) => {
 };
 
 
- export async function getServerSideProps(context){
-    console.log("context.params  ",context.params)
-    const id = context.params.productId
-    const res = await fetch(`http://localhost:3000/api/product/${id}`)
-    const data = await res.json()
-    return {
-        props:{product:data}
-    }
-} 
+//  export async function getServerSideProps(context){
+//     console.log("context.params  ",context.params)
+//     const id = context.params.productId
+//     const res = await fetch(`http://localhost:3000/api/product/${id}`)
+//     const data = await res.json()
+//     return {
+//         props:{product:data}
+//     }
+// } 
 
 
-// export async function getStaticProps(context) {
-//   console.log("context.params  ", context.params);
-//   const id = context.params.productId;
-//   const res = await fetch(`${baseUrl}/api/product/${id}`);
-//   const data = await res.json();
-//   return {
-//     props: { product: data },
-//   };
-// }
+export async function getStaticProps(context) {
+  console.log("context.params  ", context.params);
+  const id = context.params.productId;
+  const res = await fetch(`${baseUrl}/api/product/${id}`);
+  const data = await res.json();
+  return {
+    props: { product: data },
+  };
+}
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [{ params: { productId: "5f9e4cd91d1b8f3fdd86603a" } }],
-//     fallback: true,
-//   };
-// }
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { productId: "5f9e4cd91d1b8f3fdd86603a" } }],
+    fallback: true,
+  };
+}
 export default Product;
